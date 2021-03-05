@@ -3,13 +3,19 @@ import { Paper, Stepper, Step, StepLabel, Typography, CircularProgress, Divider,
 import useStyles from './styles';
 import AddressForm from '../AddressForm';
 import PaymentForm from '../PaymentForm';
-import Confirmation from '../Confirmation';
+
 
 const steps = ['Shipping address', 'Payment details'];
 
 function Checkout() {
-  const [activeStep, setActiveStep] = useState(0);
+  const [activeStep, setActiveStep] = useState(1); 
   const classes = useStyles();
+
+  const Confirmation = () => (
+    <div>
+      Confirmation
+    </div>
+  )
 
   const Form = () => activeStep === 0 ? <AddressForm /> : <PaymentForm />
 
