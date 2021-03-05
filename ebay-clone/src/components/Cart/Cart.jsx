@@ -14,7 +14,7 @@ function Cart({ cart, handleUpdateCartQty, handleRemoveFromCart, handleEmptyCart
     </Typography>
   );
 
-  const FilledCard = () => (
+  const FilledCart = () => (
     <>
       <Grid container spacing={3}>
         {cart.line_items.map((item) => (
@@ -43,6 +43,7 @@ function Cart({ cart, handleUpdateCartQty, handleRemoveFromCart, handleEmptyCart
             type='button'
             variant='contained' 
             color='primary'
+            component={ Link } to='/checkout'
           >Checkout</Button>
         </div>
       </div>
@@ -58,7 +59,7 @@ function Cart({ cart, handleUpdateCartQty, handleRemoveFromCart, handleEmptyCart
         variant='h3'
         gutterBottom
       >Your Shopping Cart</Typography>
-      { !cart.line_items.length ? <EmptyCart/> : <FilledCard />}
+      { !cart.line_items.length ? <EmptyCart/> : <FilledCart />}
     </Container>
   )
 }
