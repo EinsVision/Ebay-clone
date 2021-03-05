@@ -8,7 +8,7 @@ import useStyles from './styles';
 //   {id: 2, name: 'Macbook', description: 'Apple Macbook', price: '$10', image: 'https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/macbook-air-space-gray-config-201810?wid=1078&hei=624&fmt=jpeg&qlt=80&.v=1603332211000'},
 // ];
 
-function Products({ products}) {
+function Products({ products, onAddToCart}) {
 
   const classes = useStyles();
   return (
@@ -21,7 +21,7 @@ function Products({ products}) {
       >
         {products.map((product) => (
           <Grid item key={product.id} xs={12} sm={6} md={4} lg={3}>
-            <Product product={product} />
+            <Product product={product} onAddToCart={onAddToCart}/>
           </Grid>
         ))}
       </Grid>
