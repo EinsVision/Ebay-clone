@@ -6,7 +6,7 @@ import { commerce } from '../../lib/commerce';
 import CustomTextField from '../CheckoutForm/Checkout/CustomTextField';
 import { Link } from 'react-router-dom';
 
-function AddressForm({checkoutToken}) {
+function AddressForm({checkoutToken, next}) {
 
   const methods = useForm();
   const [shippingCountries, setShippingCountries] = useState([]);
@@ -58,7 +58,7 @@ function AddressForm({checkoutToken}) {
     <>
       <Typography variant='h6' gutterBottom>Shipping Address</Typography>
       <FormProvider {...methods}>
-        <form onSubmit=''>
+        <form onSubmit={methods.handleSubmit( (data) => next({ ...data, shippingCountry, shippingSubdivision, shippingOption }))}>
           <Grid container spacing={3}>
             <CustomTextField name='firstName' label='Fist name' />
             <CustomTextField name='lastname' label='Last name' />
