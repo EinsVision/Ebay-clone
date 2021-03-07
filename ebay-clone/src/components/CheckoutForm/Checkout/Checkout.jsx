@@ -8,7 +8,7 @@ import { useHistory } from 'react-router';
 
 const steps = ['Shipping address', 'Payment details'];
 
-function Checkout({ cart }) {
+function Checkout({ cart, order, onCaptureCheckout, error }) {
   const [activeStep, setActiveStep] = useState(0); 
   const [checkoutToken, setCheckoutToken] = useState(null);
   const [shippingData, setShippingData] = useState({});
@@ -29,8 +29,8 @@ function Checkout({ cart }) {
     generationToken();
   }, [cart]);
 
-  const nextStep = () => setActiveStep( (prevActiveStep) => prevActiveStep + 1);
-  const backStep = () => setActiveStep( (prevActiveStep) => prevActiveStep - 1);
+  const nextStep = () => setActiveStep((prevActiveStep) => prevActiveStep + 1);
+  const backStep = () => setActiveStep((prevActiveStep) => prevActiveStep - 1);
 
   const next = (data) => {
     setShippingData(data);
@@ -43,7 +43,9 @@ function Checkout({ cart }) {
     </div>
   )
 
-  const Form = () => activeStep === 0 ? <AddressForm checkoutToken={checkoutToken} next={next}/> : <PaymentForm shippingData={shippingData} checkoutToken={checkoutToken}/>
+  const Form = () => (activeStep === 0 
+    ? <AddressForm checkoutToken={checkoutToken} nextStep={nextStep} setShippingData={setShippingData} next={next}/> 
+    : <PaymentForm shippingData={shippingData} checkoutToken={checkoutToken} nextStep={nextStep} backStep={backStep} onCaptureCheckout={onCaptureCheckout}/>);
 
   return (
     <>
