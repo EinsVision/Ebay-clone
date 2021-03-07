@@ -23,6 +23,7 @@ function PaymentForm({ checkoutToken, shippingData, backStep, onCaptureCheckout,
       console.log(error);
     } else{
       const orderData = {
+        // one object : containing all of data for payment information
         line_items: checkoutToken.live.line_items,
         customer: { firstname: shippingData.firstName, lastname: shippingData.lastName, email: shippingData.email },
         shipping: { name: 'Primary', 
@@ -49,7 +50,7 @@ function PaymentForm({ checkoutToken, shippingData, backStep, onCaptureCheckout,
     <>
       <Review checkoutToken={checkoutToken}/>
       <Divider />
-      <Typography variant='h6' gutterBottom style={{margin: '20px 0'}}>Payment method</Typography>
+      <Typography variant='h6' gutterBottom style={{margin: '20px 0'}}>Payment method (Demo Card number: 4242 4242 4242 4242)</Typography>
       <Elements stripe={stripePromise}>
         <ElementsConsumer>
           {({ elements, stripe }) => (
@@ -60,6 +61,7 @@ function PaymentForm({ checkoutToken, shippingData, backStep, onCaptureCheckout,
                 <Button variant='outlined' onClick={backStep}>Back</Button>
                 <Button type='submit' variant='contained' disabled={!stripe} color='primary'>
                   Pay { checkoutToken.live.subtotal.formatted_with_symbol }
+                  
                 </Button>
               </div>
             </form>

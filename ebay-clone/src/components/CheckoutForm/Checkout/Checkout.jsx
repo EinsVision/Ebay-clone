@@ -38,9 +38,11 @@ function Checkout({ cart, order, onCaptureCheckout, error }) {
   }
 
   const Confirmation = () => (
-    <div>
-      Confirmation
-    </div>
+    <>
+      <div>
+        <Typography variant='h5'>Thank you for your purchase, firstName, lastName</Typography>
+      </div>
+    </>
   )
 
   const Form = () => (activeStep === 0 
