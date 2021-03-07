@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Paper, Stepper, Step, StepLabel, Typography, CircularProgress, Divider, Button } from '@material-ui/core';
+import { Paper, Stepper, Step, StepLabel, Typography, CircularProgress, Divider, Button, CssBaseline } from '@material-ui/core';
 import useStyles from './styles';
 import AddressForm from '../AddressForm';
 import PaymentForm from '../PaymentForm';
@@ -68,6 +68,7 @@ function Checkout({ cart, order, onCaptureCheckout, error }) {
 
   return (
     <>
+    <CssBaseline />
       <div className={classes.toolbar} />
       <main className={classes.layout}>
         <Paper className={classes.paper}>
